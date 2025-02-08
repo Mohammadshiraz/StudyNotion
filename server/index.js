@@ -23,23 +23,27 @@ database.connect();
 app.use(express.json());
 app.use(cookieParser());
 
-// const whitelist = process.env.CORS_ORIGIN
-//   ? JSON.parse(process.env.CORS_ORIGIN)
-//   : ["*"];
+const whitelist = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.includes(",") 
+    ? process.env.CORS_ORIGIN.split(",")  // Convert comma-separated values to an array
+    : [process.env.CORS_ORIGIN]           // Wrap a single string in an array
+  : ["*"];
 
-// app.use(
-//   cors({
-//     origin: whitelist,
-//     credentials: true,
-//     maxAge: 14400,
-//   })
-// );
+console.log("Allowed Origins:", whitelist);
+
 app.use(
-    cors({
-        origin:"https://study-notion-three-snowy.vercel.app/",
-        credentials: true,
-    })
-)
+  cors({
+    origin: whitelist.includes("*") ? "*" : whitelist,
+    credentials: true,
+    maxAge: 14400,
+  })
+);
+// app.use(
+//     cors({
+//         origin:"https://study-notion-three-snowy.vercel.app/",
+//         credentials: true,
+//     })
+// )
 
 app.use(
   fileUpload({
