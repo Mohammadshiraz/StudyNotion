@@ -22,18 +22,24 @@ database.connect();
 
 app.use(express.json());
 app.use(cookieParser());
-
-const whitelist = process.env.CORS_ORIGIN
-  ? [process.env.CORS_ORIGIN]
-  : ["*"];
-
 app.use(
-  cors({
-    origin: whitelist,
-    credentials: true,
-    maxAge: 14400,
-  })
-);
+	cors({
+		origin: "*",
+		credentials: true,
+	})
+)
+
+// const whitelist = process.env.CORS_ORIGIN
+//   ? [process.env.CORS_ORIGIN]
+//   : ["*"];
+
+// app.use(
+//   cors({
+//     origin: whitelist,
+//     credentials: true,
+//     maxAge: 14400,
+//   })
+// );
 
 app.use(
   fileUpload({
@@ -55,11 +61,12 @@ app.use("/api/v1/course", CourseRoutes);
 app.use("/api/v1/contact", require("./routes/ContactUs"));
 
 app.get("/", (req, res) => {
-  res.status(200).json({
-    message: "Welcome to the API",
-  });
+	return res.json({
+		success:true,
+		message:'Your server is up and running....'
+	});
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+	console.log(`App is running at ${PORT}`)
+})
