@@ -47,6 +47,9 @@ exports.showAllCategories = async (req, res) => {
 exports.categoryPageDetails = async (req, res) => {
 	try {
 		const { categoryId } = req.body;
+		console.log(categoryId);
+		// console.log();
+		
 
 		// Get courses for the specified category
 		const selectedCategory = await Category.findById(categoryId)          //populate instuctor and rating and reviews from courses
@@ -105,7 +108,7 @@ exports.categoryPageDetails = async (req, res) => {
 //add course to category
 exports.addCourseToCategory = async (req, res) => {
 	const { courseId, categoryId } = req.body;
-	// console.log("category id", categoryId);
+	console.log("category id", categoryId);
 	try {
 		const category = await Category.findById(categoryId);
 		if (!category) {
