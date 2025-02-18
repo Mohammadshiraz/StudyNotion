@@ -25,7 +25,7 @@ const RatingSlider = () => {
           ratingsEndpoints.REVIEWS_DETAILS_API
         );
         setReviews(res.data.data);
-        console.log("LOGGING REVIEWS", res);
+        // console.log("LOGGING REVIEWS", res);
       } catch (error) {
         console.log("LOGGING Review ERROR", error);
       } finally {

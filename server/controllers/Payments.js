@@ -66,7 +66,7 @@ exports.capturePayment = async (req, res) => {
         try{
             //initiate the payment using razorpay
             const paymentResponse = await instance.orders.create(options);
-            console.log("payment",paymentResponse);
+            // console.log("payment",paymentResponse);
             //return response
             return res.status(200).json({
                 success:true,
@@ -122,7 +122,7 @@ exports.verifySignature = async (req, res) => {
                     try{
                         //update the course
                         for(const course_id of courses){
-                        console.log("verify courses=",course_id);
+                        // console.log("verify courses=",course_id);
                         //enrolled course push student
                         const course = await Course.findByIdAndUpdate(
                             course_id,
@@ -148,7 +148,7 @@ exports.verifySignature = async (req, res) => {
                           },{new:true});
                         //send email
                         const recipient = await User.findById(userId);
-                        console.log("recipient=>",course);
+                        // console.log("recipient=>",course);
                         const courseName = course.courseName;
                         const courseDescription = course.courseDescription;
                         const thumbnail = course.thumbnail;

@@ -44,11 +44,11 @@ export async function buyCourse (token, courses, userDetails, navigate, dispatch
     })
     if(!orderResponse.data.success){
         toast.error(orderResponse.data.message)
-        console.log("buyCourse -> orderResponse", orderResponse)
+        // console.log("buyCourse -> orderResponse", orderResponse)
         toast.dismiss(toastId);
         return
     }
-    console.log("buyCourse -> orderResponse", orderResponse)
+    // console.log("buyCourse -> orderResponse", orderResponse)
     const options = {
         key: process.env.REACT_APP_RAZORPAY_KEY_ID,
         currency: orderResponse.data.currency,
@@ -62,7 +62,7 @@ export async function buyCourse (token, courses, userDetails, navigate, dispatch
             email: userDetails?.email,
         },
         handler: async function (response) {
-            console.log("buyCourse -> response", response)
+            // console.log("buyCourse -> response", response)
             sendPaymentSuccessEmail(response,orderResponse.data.amount,token);
             verifypament(response,courses,token,navigate,dispatch);
         },
@@ -80,7 +80,7 @@ export async function buyCourse (token, courses, userDetails, navigate, dispatch
     } catch (error) {
         toast.dismiss(toastId);
         toast.error("Something went wrong");
-        console.log("buyCourse -> error", error)
+        // console.log("buyCourse -> error", error)
     }
 }
 
@@ -108,7 +108,7 @@ async function sendPaymentSuccessEmail (response,amount,token) {
 
 async function verifypament (response,courses,token,navigate,dispatch,) {
     const toastId = toast.loading("Please wait while we verify your payment");
-    console.log("verifypayment -> courses", courses.courses);
+    // console.log("verifypayment -> courses", courses.courses);
     try{
         // const data = {
         //     amount: response.amount.toString(),
@@ -124,7 +124,7 @@ async function verifypament (response,courses,token,navigate,dispatch,) {
         }, {
             Authorisation: `Bearer ${token}`,
         });
-        console.log("verifypament -> res", res)
+        // console.log("verifypament -> res", res)
         if (!res.data.success) {
             toast.error(res.message);
             return;

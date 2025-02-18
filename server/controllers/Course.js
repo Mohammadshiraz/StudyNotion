@@ -61,7 +61,7 @@ exports.createCourse = async (req, res) => {
 
 		// Check if the tag given is valid
 		const categoryDetails = await Category.findById(category);
-		console.log(categoryDetails);
+		// console.log(categoryDetails);
 		
 		if (!categoryDetails) {
 			return res.status(404).json({
@@ -74,7 +74,7 @@ exports.createCourse = async (req, res) => {
 			thumbnail,
 			process.env.FOLDER_NAME
 		);
-		console.log(thumbnailImage);
+		// console.log(thumbnailImage);
 		// Create a new course with the given details
 		const newCourse = await Course.create({
 			courseName,
@@ -247,7 +247,7 @@ exports.editCourse = async (req, res) => {
   
 	  // If Thumbnail Image is found, update it
 	  if (req.files) {
-		console.log("thumbnail update")
+		// console.log("thumbnail update")
 		const thumbnail = req.files.thumbnailImage
 		const thumbnailImage = await uploadImageToCloudinary(
 		  thumbnail,
@@ -336,7 +336,7 @@ exports.editCourse = async (req, res) => {
 		userID: userId,
 	  })
   
-	  console.log("courseProgressCount : ", courseProgressCount)
+	//   console.log("courseProgressCount : ", courseProgressCount)
   
 	  if (!courseDetails) {
 		return res.status(400).json({

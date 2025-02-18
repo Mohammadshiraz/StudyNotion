@@ -12,7 +12,7 @@ self.addEventListener("install", (event) => {
         for(let i=0;i<urls.length;i++){
             try{
             cache.add(urls[i])
-            console.log("cached",urls[i])
+            // console.log("cached",urls[i])
             }
             catch(err){
                 console.log(err)

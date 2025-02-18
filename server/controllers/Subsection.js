@@ -10,11 +10,11 @@ exports.createSubSection = async (req, res) => {
 		// Extract necessary information from the request body
 		const { sectionId, title , description,courseId } = req.body;
 		const video = req.files.videoFile;
-		console.log(sectionId);
-		console.log(title);
-		console.log(description);
-		console.log(video);
-		console.log(courseId);
+		// console.log(sectionId);
+		// console.log(title);
+		// console.log(description);
+		// console.log(video);
+		// console.log(courseId);
 		
 
 		// Check if all necessary fields are provided
@@ -38,7 +38,7 @@ exports.createSubSection = async (req, res) => {
 			process.env.FOLDER_VIDEO
 		);
 
-		console.log(uploadDetails);
+		// console.log(uploadDetails);
 		// Create a new sub-section with the necessary information
 		const SubSectionDetails = await SubSection.create({
 			title: title,

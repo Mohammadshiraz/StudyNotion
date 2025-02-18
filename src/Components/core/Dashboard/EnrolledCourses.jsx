@@ -19,7 +19,7 @@ const EnrolledCourses = () => {
     const getEnrolledCourses = async() => {
         setLoading(true);
             const response = await getUserEnrolledCourses(token,dispatch);
-            console.log("getEnrolledCourses -> response", response?.courseProgress);
+            // console.log("getEnrolledCourses -> response", response?.courseProgress);
             setLoading(false);
             setEnrolledCourses(response?.courses);
             setProgressData(response?.courseProgress);
